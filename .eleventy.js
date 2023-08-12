@@ -4,6 +4,5 @@ module.exports = function () {
       input: "src",
       output: "dist",
     },
-    pathPrefix: "/jimdaily/",
   };
 };
