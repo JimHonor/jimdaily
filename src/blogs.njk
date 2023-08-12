@@ -1,0 +1,18 @@
+---
+title: "Blogs"
+layout: "base.njk"
+---
+
+<h1>All Blogs</h1>
+<div>
+  {% for blog in collections.blogs %}
+  <div>
+    <a href="/blogs/{{ blog.data.title }}">
+      {{ blog.data.title }}
+    </a>
+    <span>
+      {{ blog.data.publishAt }}
+    </span>
+  </div>
+  {% endfor %}
+</div>
