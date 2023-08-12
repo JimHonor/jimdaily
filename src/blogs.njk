@@ -7,7 +7,7 @@ layout: "base.njk"
 <div>
   {% for blog in collections.blogs %}
   <div>
-    <a href="{{ '/blogs/{{ blog.data.title }}' | url}}">
+    <a href="{{ blog.url }}">
       {{ blog.data.title }}
     </a>
     <span>
