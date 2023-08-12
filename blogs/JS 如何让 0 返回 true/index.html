@@ -1,0 +1,50 @@
+<p>我有一个函数，这个函数会遍历一个数组，当找到第一个值为 0 的元素时，就返回该元素的索引。</p>
+<pre><code class="language-js">function fn(list) {
+  for (let index = 0; index &lt; list.length; index++) {
+    if (list[index] === 0) {
+      return index;
+    }
+  }
+}
+</code></pre>
+<p>然后，当索引存在时，就会做一些事情。</p>
+<pre><code class="language-js">const list = [1, 0, 2, 3];
+const index = fn(list);
+if (index) {
+  console.log(&quot;do something.&quot;);
+}
+</code></pre>
+<pre><code class="language-js">const list = [1, 2, 3, 4];
+const index = fn(list);
+if (index) {
+  console.log(&quot;do something.&quot;);
+}
+</code></pre>
+<p>上面的代码可以正常运行，但如果给函数 <code>fn</code> 传入的数组的第一个值就是 0 的话，就会出现问题： 由于 index 的值为 0，而 0 是一个 falsy value，所以 if 语句内部不会运行。</p>
+<pre><code class="language-js">const list = [0, 1, 2, 3];
+const index = fn(list);
+if (index) {
+  console.log(&quot;do something.&quot;);
+}
+</code></pre>
+<p>那么要如何解决这个问题呢？</p>
+<h2></h2>
+<pre><code class="language-js">if (index !== undefined) { .. }
+</code></pre>
+<h2></h2>
+<pre><code class="language-js">if (index &gt;= 0) { ... }
+</code></pre>
+<p>这种方式可能存在意外，因为：</p>
+<pre><code class="language-txt">Input | &gt;= 0
+------------
+&quot;1&quot;   | true
+false | true
+null  | true
+[]    | true
+&quot;&quot;    | true
+</code></pre>
+<h2></h2>
+<pre><code class="language-js">if (typeof index === &quot;number&quot;) {
+  // DO SOMETHING
+}
+</code></pre>

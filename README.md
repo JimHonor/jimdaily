@@ -1,1 +1,0 @@
-jimdaily.com
