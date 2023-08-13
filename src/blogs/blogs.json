@@ -1,4 +1,5 @@
 {
   "layout": "blog.njk",
-  "tags": "blogs"
+  "tags": "blogs",
+  "permalink": "/blogs/{{ page.fileSlug | slugify }}/"
 }
