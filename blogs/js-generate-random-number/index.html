@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link
+      href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css"
+      rel="stylesheet"
+    />
     <title>Jim Daily</title>
   </head>
   <body>
@@ -19,55 +23,47 @@
   <h1>JS 如何获得随机数</h1>
   <div><h2>限定最大值</h2>
 <p>假设我们想从 1 2 3 4 5 6 中随机获得一个数字，就像我们扔骰子时尘埃落定后那个正面朝上的点数，我们可以这样做：</p>
-<pre><code class="language-js">const max = 6;
-const x = Math.random();
-const random = x * max;
-const int = Math.floor(random);
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> max <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> x <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> random <span class="token operator">=</span> x <span class="token operator">*</span> max<span class="token punctuation">;</span>
+<span class="token keyword">const</span> int <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>random<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-console.log(ran, random, int);
-// 0.8941575833797062 5.364945500278237 5
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ran<span class="token punctuation">,</span> random<span class="token punctuation">,</span> int<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 0.8941575833797062 5.364945500278237 5</span></code></pre>
 <p>让我们逐步分析下这段程序。</p>
 <p>首先是：<code>Math.random()</code> 方法会返回一个大于等于 0 且小于 1 的数，也就是说 <code>0 ≤ x &lt; 1</code> 。</p>
-<pre><code class="language-js">const x = Math.random();
-</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> x <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>然后是：因为 max 等于 6，因此 <code>0 ≤ random &lt; 6</code> 。</p>
-<pre><code class="language-js">const random = x * max;
-</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> random <span class="token operator">=</span> x <span class="token operator">*</span> max<span class="token punctuation">;</span></code></pre>
 <p>最后是：<code>Math.floor()</code> 方法会将一个小数的小数位都去掉后返回一个整数，比如 <code>Math.floor(0.985)</code> 会返回 0，<code>Math.floor(3.1415)</code> 会返回 3 。由于 <code>0 ≤ random &lt; 6</code> ，所以 int 可能是 0 1 2 3 4 5 中的任意一个数字。</p>
-<pre><code class="language-js">const int = Math.floor(random);
-</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> int <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>random<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h2>限定最小值</h2>
 <p>这里我们得到的是从 0 到 5 的某个数，如果我们想要得到从 1 到 5 的某个数，可以这样做：</p>
-<pre><code class="language-js">const min = 1;
-const max = 6;
-const x = Math.random();
-const random = x * max + min;
-const int = Math.floor(random);
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> min <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> max <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> x <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> random <span class="token operator">=</span> x <span class="token operator">*</span> max <span class="token operator">+</span> min<span class="token punctuation">;</span>
+<span class="token keyword">const</span> int <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>random<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-console.log(ran, random, int);
-// 0.8406554082399766 6.043932449439859 6
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ran<span class="token punctuation">,</span> random<span class="token punctuation">,</span> int<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 0.8406554082399766 6.043932449439859 6</span></code></pre>
 <p>我们对 random 的获得做了改动：</p>
-<pre><code class="language-js">const random = x * max + min;
-// 0 ≤ x &lt; 1
-// 0 ≤ 6x &lt; 6
-// 1 ≤ 6x + 1 &lt; 7
-</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> random <span class="token operator">=</span> x <span class="token operator">*</span> max <span class="token operator">+</span> min<span class="token punctuation">;</span>
+<span class="token comment">// 0 ≤ x &lt; 1</span>
+<span class="token comment">// 0 ≤ 6x &lt; 6</span>
+<span class="token comment">// 1 ≤ 6x + 1 &lt; 7</span></code></pre>
 <h2>从数组中随机获得一个元素</h2>
 <p>假设有个数组为 <code>[3, 4, 1, 5, 9, 2, 6]</code>，要从中随机选中一个元素，可以这样做：</p>
-<pre><code class="language-js">const list = [3, 4, 1, 5, 9, 2, 6];
-const random = Math.floor(Math.random() * list.length);
-const item = list[random];
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> random <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> list<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> item <span class="token operator">=</span> list<span class="token punctuation">[</span>random<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-console.log(random);
-console.log(item);
-// 3
-// 5
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>random<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 3</span>
+<span class="token comment">// 5</span></code></pre>
 <p>这里的关键在于：我们通过 <code>list.length</code> 可以得到数组一共包含了多少个元素，这个例子里是 7 个。因此，<code>Math.random() * list.length</code> 的范围会是 <code>0 ≤ &lt; 7</code> ，于是最后可以得到 0 1 2 3 4 5 6 中的任意一个数。</p>
-<pre><code class="language-js">const random = Math.floor(Math.random() * list.length);
-</code></pre>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> random <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> list<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>接着通过 <code>list[random]</code> 得到元素就可以了。比如 random 如果是 3 的话，item 就是 5 了。</p>
 </div>
 </div>

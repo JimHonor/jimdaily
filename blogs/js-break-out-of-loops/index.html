@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link
+      href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css"
+      rel="stylesheet"
+    />
     <title>Jim Daily</title>
   </head>
   <body>
@@ -19,49 +23,45 @@
   <h1>JS 如何跳出循环</h1>
   <div><h2>break with for loop</h2>
 <p>假设我们有一个数组，里面有 0 到 3 这个四个数字，我们想要打印出这四个数字，可以通过 for 循环来实现。</p>
-<pre><code class="language-js">const list = [0, 1, 2, 3];
-for (let i = 0; i &lt; list.length; i++) {
-  console.log(list[i]);
-}
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> list<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-// 0
-// 1
-// 2
-// 3
-</code></pre>
+<span class="token comment">// 0</span>
+<span class="token comment">// 1</span>
+<span class="token comment">// 2</span>
+<span class="token comment">// 3</span></code></pre>
 <p>在这段程序中，我们通过 for 循环，在每次迭代中打印 <code>list[i]</code> 的值。</p>
 <p>假设现在我们不想打印全部数字了，而是打印到 1 就不再打了，我们可以通过 break 关键字来实现。</p>
-<pre><code class="language-js">const list = [0, 1, 2, 3];
-for (let i = 0; i &lt; list.length; i++) {
-  if (list[i] === 2) {
-    break;
-  }
-  console.log(list[i]);
-}
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> list<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>list<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-// 0
-// 1
-</code></pre>
+<span class="token comment">// 0</span>
+<span class="token comment">// 1</span></code></pre>
 <p>break 语句的用法如下：</p>
-<pre><code class="language-js">if (list[i] === 2) {
-	break
-}
-
+<pre class="language-js"><code class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>list<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">break</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <p>这段程序的意思是，当 <code>list[i]</code> 的值等于 2 时，break 语句就结束循环。也就是说，<strong>break 语句之后的程序不会再运行，并且之后的迭代也不会再进行</strong>。因此，最后只打印出了 0 和 1，而大于或等于 2 的值则没有打印出来。</p>
 <h2>break with for...of loop</h2>
 <p>break 也可以在 for...of 循环中使用：</p>
-<pre><code class="language-js">const list = [0, 1, 2, 3];
-for (const item of list) {
-  if (item === 2) {
-    break;
-  }
-  console.log(item);
-}
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> item <span class="token keyword">of</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>item <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-// 0
-// 1
-</code></pre>
+<span class="token comment">// 0</span>
+<span class="token comment">// 1</span></code></pre>
 <h2>break with map method of Array</h2>
 <p>顺便提一句，数组的 map 方法无法提前跳出循环！</p>
 </div>
